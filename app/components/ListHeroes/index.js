@@ -14,7 +14,8 @@ class ListHeroes extends React.Component {
         return data;
       })
       .then((data) => {
-        this.setState({ results: data });
+        this.setState({ results: data.results });
+        console.log('results', this.state.results);
       })
       .catch((err) => {
         console.error(err);
@@ -22,11 +23,9 @@ class ListHeroes extends React.Component {
   }
 
   render() {
-    const { results } = this.state.results;
-    console.log('results', results);
     return (
       <ul>
-        {results.map(item => <li>{item.name}</li>)}
+        {this.state.results.map(item => <li key={item.name}>{item.name}</li>)}
       </ul>
     )
   }

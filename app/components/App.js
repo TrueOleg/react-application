@@ -1,7 +1,5 @@
 import React from 'react';
 import img from '../assets/images/react_logo_512x512.png';
-import Button from './Button';
-import Container from './Container';
 import ListHeroes from './ListHeroes';
 
 const App = () => {
@@ -16,8 +14,6 @@ const App = () => {
         src={img}
         alt="React Logo"
       />
-      <Button text="button lol" />
-      <Container text="aaaaaa" />
       <ListHeroes />
     </div>
   );
