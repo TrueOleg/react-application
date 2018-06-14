@@ -1,28 +1,21 @@
 import React from 'react';
-import axios from 'axios';
 
 class ListHeroes extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { heroes: [] };
-  }
-  componentDidMount() {
-    axios.get('https://swapi.co/api/people/')
-      .then((res) => {
-        this.setState({ heroes: res.data.results });
-        console.log('heroes', this.state.heroes);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    this.state = { allHeroes: [] };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.state.allHeroes) {
+      this.state.allHeroes = nextProps;
+    }
+  }
   render() {
-    return (
-      <ul>
-        {this.state.heroes.map(item => <li key={item.name}>{item.name}</li>)}
-      </ul>
-    )
+    const { heroes } = this.state.allHeroes;
+    return heroes.map((item) => {
+      return (<li key={item.name}>{item.name}</li>)
+    });
   }
 }
 
