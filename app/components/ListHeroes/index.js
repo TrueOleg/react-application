@@ -7,7 +7,8 @@ class ListHeroes extends React.Component {
   }
 
   render() {
-    const { heroes } = this.props.map((item) => {
+    const { props } = this.props.heroes;
+    const { heroes } = props.map((item) => {
       return (<li key={item.name} state={this.state.isOpen}>{item.name}</li>)
     });
     return (
