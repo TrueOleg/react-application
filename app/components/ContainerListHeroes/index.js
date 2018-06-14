@@ -22,9 +22,7 @@ class ContainerListHeroes extends React.Component {
     return (
       <React.Fragment>
         <h1>Heroes</h1>
-        <ul>
-          <ListHeroes heroes={this.state.heroes} />
-        </ul>
+        <ListHeroes heroes={this.state.heroes} />
       </React.Fragment>
     )
   }
