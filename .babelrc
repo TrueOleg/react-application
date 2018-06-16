@@ -1,6 +1,6 @@
 {
   "presets": [
-    "react",
+    "react", "stage-2",
     [ "env", {
       "targets": {
         "browsers": "> 2%"

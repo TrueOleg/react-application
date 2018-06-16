@@ -10,15 +10,15 @@ class RowHero extends React.Component {
 
   handlerClick() {
         const { name } = this.props.hero;
-        console.log('name', name)
-        const value = !this.state.isOpen;
+        // console.log('name', name)
+        const isOpen = !this.state.isOpen;
         this.setState({
-            isOpen: !this.state.isOpen,
+            isOpen,
         })
-        this.props.isOpen(name, value)
+        this.props.isOpen(name, isOpen)
       }
   render() {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     const { hero } = this.props;
     const isOpen = this.state.isOpen;
     return (<React.Fragment>
