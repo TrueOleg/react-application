@@ -12,7 +12,6 @@ class ListHeroes extends React.Component {
     this.isOpen = this.isOpen.bind(this);
     this.isChange = this.isChange.bind(this);
     this.isClear = this.isClear.bind(this);
-
   }
 
   componentWillReceiveProps(nextProps) {
