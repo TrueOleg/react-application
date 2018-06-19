@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import RowHero from '../RowHero';
+import * as actions from '../../redux/actions';
 
 class ListHeroes extends React.Component {
   constructor(props) {
@@ -26,6 +29,7 @@ class ListHeroes extends React.Component {
 
   isOpen(name, value) {
     this.setState({ stateOfHeroes: {...this.state.stateOfHeroes, [name]: value} })
+    this.props.addName(name);
   }
 
   isChange(e) {
@@ -57,4 +61,11 @@ class ListHeroes extends React.Component {
     );
   }
 }
-export default ListHeroes;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addName: (name) => dispatch(actions.addName(name))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ListHeroes);

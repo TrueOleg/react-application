@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class RowHero extends React.Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class RowHero extends React.Component {
         const isOpen = !this.state.isOpen;
         this.setState({
             isOpen,
-        })
-        this.props.isOpen(name, isOpen)
+        });
+        this.props.isOpen(name, isOpen);
       }
   render() {
     // console.log('props', this.props)
@@ -31,7 +32,7 @@ class RowHero extends React.Component {
                 
               </li>
               
-            </React.Fragment>)
+            </React.Fragment>);
   }
 }
 export default RowHero;

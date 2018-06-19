@@ -1,6 +1,8 @@
 import React from 'react';
+
 import img from '../assets/images/react_logo_512x512.png';
 import ListHeroes from './ContainerListHeroes';
+import Name from '../components/Name';
 
 const App = () => {
   return (
@@ -15,6 +17,7 @@ const App = () => {
         alt="React Logo"
       />
       <ListHeroes />
+      <Name />
     </div>
   );
 };
