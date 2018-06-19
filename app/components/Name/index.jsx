@@ -5,7 +5,12 @@ import {connect} from 'react-redux';
 class Name extends React.Component {
 
     render() {
-        return (<p>{}</p>)
+        console.log('aaaaa', this.props.names)
+        const { names } = this.props.names;
+        const openHeroes = names.map((item) => {
+            return (<li>{item}</li>)
+        })
+        return (<ul>{ openHeroes }</ul>)
       }
 }
 
@@ -14,5 +19,6 @@ const mapStateToProps = (state) => {
         names: state.namesHeroes
     }
 }
+
 
 export default connect(mapStateToProps)(Name);
