@@ -2,7 +2,7 @@ import * as Const from '../constants';
 
 const initialState = {
     names: [],
-    zdsffsdfd: 1,
+    heroes: [],
     sddgf:2,
 }
 
