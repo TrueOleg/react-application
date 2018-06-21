@@ -22,13 +22,13 @@ class ListHeroes extends React.Component {
     nextProps.heroes.forEach(hero => {
       stateOfHeroes[hero.name] = false;
     });
-    this.props.dispatchVisibilityHeroes({stateOfHeroes});
+    this.setState({ stateOfHeroes });
 
   }
 
   isOpen(name, value) {
     this.setState({ stateOfHeroes: {...this.state.stateOfHeroes, [name]: value} })
-    // this.props.addName(name);
+    this.props.addName(name);
   }
 
   isChange(e) {
@@ -68,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: (url) => dispatch(actions.itemsFetchData(url))
+      fetchData: (url) => dispatch(actions.itemsFetchData(url)),
+      addName: (data) => dispatch(actions.addName(data))
   };
 };
 
