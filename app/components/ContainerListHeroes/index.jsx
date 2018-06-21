@@ -17,8 +17,8 @@ class ContainerListHeroes extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {/* <h1>Heroes</h1>
-        <ListHeroes  /> */}
+        <h1>Heroes</h1>
+        <ListHeroes  />
       </React.Fragment>
     )
   }
@@ -26,7 +26,7 @@ class ContainerListHeroes extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-      heroes: state.results,
+      heroes: state.items.results,
       hasErrored: state.itemsHasErrored,
       isLoading: state.itemsIsLoading
   };

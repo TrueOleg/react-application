@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../../redux/actions';
+
 class RowHero extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,6 @@ class RowHero extends React.Component {
 
   handlerClick() {
         const { name } = this.props.hero;
-        // console.log('name', name)
         const isOpen = !this.state.isOpen;
         this.setState({
             isOpen,
@@ -19,7 +20,6 @@ class RowHero extends React.Component {
         this.props.isOpen(name, isOpen);
       }
   render() {
-    console.log('props', this.props)
     const { hero } = this.props;
     const isOpen = this.state.isOpen;
     return (<React.Fragment>
@@ -38,9 +38,17 @@ class RowHero extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-      heroes: state.items.results
-  }
-}
+      heroes: state.items.results,
+      hasErrored: state.itemsHasErrored,
+      isLoading: state.itemsIsLoading
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchData: (url) => dispatch(actions.itemsFetchData(url))
+  };
+};
 
 
-export default connect(mapStateToProps)(RowHero);
+export default connect(mapStateToProps, mapDispatchToProps)(RowHero);

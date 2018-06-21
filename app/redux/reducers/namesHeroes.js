@@ -2,7 +2,19 @@ import * as Const from '../constants';
 
 const initialState = {
     names: [],
-}
+};
+
+const visibleHeroes = (state, action) => {
+  const { type, data } = action;
+  switch (type) {
+    case Const.DISPATCH_VISIBLE_HEROES:
+      return {
+        ...state, 
+        stateOfHeroes: state.stateOfHeroes.concat(data)
+      }
+    default: return state;  
+  } 
+};
 
 const findName = (state, arr, name, action) => {
   const i = arr.indexOf(name, 0);

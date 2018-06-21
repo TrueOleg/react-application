@@ -52,4 +52,11 @@ export const itemsFetchData = (url) => {
     };
   };
 
+export const dispatchVisibilityHeroes = (state) => {
+    return {
+        type: 'DISPATCH_VISIBLE_HEROES',
+        data: state
+    };
+};
+
   

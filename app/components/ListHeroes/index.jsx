@@ -18,22 +18,20 @@ class ListHeroes extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('props', this.props);
     let stateOfHeroes = {};
     nextProps.heroes.forEach(hero => {
       stateOfHeroes[hero.name] = false;
     });
-    this.setState({stateOfHeroes})
+    this.props.dispatchVisibilityHeroes({stateOfHeroes});
 
   }
 
   isOpen(name, value) {
     this.setState({ stateOfHeroes: {...this.state.stateOfHeroes, [name]: value} })
-    this.props.addName(name);
+    // this.props.addName(name);
   }
 
   isChange(e) {
-    console.log(e.target);
     this.setState({ input: e.target.value })
   }
 
@@ -43,9 +41,7 @@ class ListHeroes extends React.Component {
   }
 
   render() {
-    // console.log('stateOfHeroes', this.state);
-    console.log('state', this.state.input)
-    const { heroes } = this.props.items.results;
+    const { heroes } = this.props;
     const comp = heroes.map((item) => {
       return (<RowHero hero={item} state={this.state.isOpen} isOpen={this.isOpen}/>)
     });
@@ -54,9 +50,9 @@ class ListHeroes extends React.Component {
         <ul>
           { comp }
         </ul>
-        {/* <button onClick={this.isOpen}></button>
+        <button onClick={this.isOpen}></button>
         <input onChange={this.isChange} onBlur={this.isClear} value={this.state.input} type='text' />
-        <p>{this.state.input}</p> */}
+        <p>{this.state.input}</p>
       </div>  
     );
   }
@@ -64,8 +60,16 @@ class ListHeroes extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-      heroes: state.items.results
-  }
-}
+      heroes: state.items.results,
+      hasErrored: state.itemsHasErrored,
+      isLoading: state.itemsIsLoading
+  };
+};
 
-export default connect(null, mapStateToProps)(ListHeroes);
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchData: (url) => dispatch(actions.itemsFetchData(url))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListHeroes);
