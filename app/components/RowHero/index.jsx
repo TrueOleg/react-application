@@ -19,7 +19,7 @@ class RowHero extends React.Component {
         this.props.isOpen(name, isOpen);
       }
   render() {
-    // console.log('props', this.props)
+    console.log('props', this.props)
     const { hero } = this.props;
     const isOpen = this.state.isOpen;
     return (<React.Fragment>
@@ -35,4 +35,12 @@ class RowHero extends React.Component {
             </React.Fragment>);
   }
 }
-export default RowHero;
+
+const mapStateToProps = (state) => {
+  return {
+      heroes: state.items.results
+  }
+}
+
+
+export default connect(mapStateToProps)(RowHero);

@@ -12,23 +12,14 @@ class ContainerListHeroes extends React.Component {
   componentDidMount() {
     console.log(this.props)
     this.props.fetchData('https://swapi.co/api/people/')
-    // axios.get('https://swapi.co/api/people/')
-    //   .then((res) => {
-    //     this.setState({ heroes: res.data.results });
-    //     console.log('heroes', this.state.heroes);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
   }
 
   render() {
     return (
-      // <React.Fragment>
-      //   {/* <h1>Heroes</h1>
-      //   <ListHeroes  /> */}
-      // </React.Fragment>
-      <p>44444</p>
+      <React.Fragment>
+        {/* <h1>Heroes</h1>
+        <ListHeroes  /> */}
+      </React.Fragment>
     )
   }
 }

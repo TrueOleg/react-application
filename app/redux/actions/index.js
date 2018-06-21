@@ -22,10 +22,10 @@ export const itemsIsLoading = (bool) => {
     };
   };
 
-export const itemsFetchDataSuccess = (items) => {
+export const itemsFetchDataSuccess = (json) => {
     return {
         type: 'ITEMS_FETCH_DATA_SUCCESS',
-        items
+        data: json
     };
   };
 
@@ -35,7 +35,9 @@ export const itemsFetchData = (url) => {
 
         axios.get(url)
             .then((response) => {
-                if (!response.ok) {
+
+                if (!response) {
+
                     throw Error(response.statusText);
                 }
 
@@ -43,8 +45,9 @@ export const itemsFetchData = (url) => {
 
                 return response;
             })
-            .then((response) => response.json())
-            .then((items) => dispatch(itemsFetchDataSuccess(items)))
+            .then((response) => {
+                dispatch(itemsFetchDataSuccess(response.data))
+            })
             .catch(() => dispatch(itemsHasErrored(true)));
     };
   };

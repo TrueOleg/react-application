@@ -2,8 +2,6 @@ import * as Const from '../constants';
 
 const initialState = {
     names: [],
-    heroes: [],
-    sddgf:2,
 }
 
 const findName = (state, arr, name, action) => {

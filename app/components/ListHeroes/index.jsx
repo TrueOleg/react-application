@@ -18,7 +18,7 @@ class ListHeroes extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    
+    console.log('props', this.props);
     let stateOfHeroes = {};
     nextProps.heroes.forEach(hero => {
       stateOfHeroes[hero.name] = false;
@@ -45,7 +45,7 @@ class ListHeroes extends React.Component {
   render() {
     // console.log('stateOfHeroes', this.state);
     console.log('state', this.state.input)
-    const { heroes } = this.props;
+    const { heroes } = this.props.items.results;
     const comp = heroes.map((item) => {
       return (<RowHero hero={item} state={this.state.isOpen} isOpen={this.isOpen}/>)
     });
@@ -54,18 +54,18 @@ class ListHeroes extends React.Component {
         <ul>
           { comp }
         </ul>
-        <button onClick={this.isOpen}></button>
+        {/* <button onClick={this.isOpen}></button>
         <input onChange={this.isChange} onBlur={this.isClear} value={this.state.input} type='text' />
-        <p>{this.state.input}</p>
+        <p>{this.state.input}</p> */}
       </div>  
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    addName: (name) => dispatch(actions.addName(name))
+      heroes: state.items.results
   }
 }
 
-export default connect(null, mapDispatchToProps)(ListHeroes);
+export default connect(null, mapStateToProps)(ListHeroes);

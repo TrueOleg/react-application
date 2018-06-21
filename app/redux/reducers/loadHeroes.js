@@ -1,13 +1,12 @@
 import * as Const from '../constants';
 
 const initialState = {
-    names: [],
-    heroes: [],
+    results: [],
 }
 
 export const itemsHasErrored = (state = false, action) => {
     switch (action.type) {
-        case 'ITEMS_HAS_ERRORED':
+        case Const.ITEMS_HAS_ERRORED:
             return action.hasErrored;
 
         default:
@@ -17,7 +16,7 @@ export const itemsHasErrored = (state = false, action) => {
 
 export const itemsIsLoading = (state = false, action) => {
     switch (action.type) {
-        case 'ITEMS_IS_LOADING':
+        case Const.ITEMS_IS_LOADING:
             return action.isLoading;
 
         default:
@@ -25,12 +24,13 @@ export const itemsIsLoading = (state = false, action) => {
     }
 }
 
-export const items = (state = [], action) => {
-    switch (action.type) {
-        case 'ITEMS_FETCH_DATA_SUCCESS':
+export const items = (state = initialState, action) => {
+    const { type, data } = action;
+    switch (type) {
+        case Const.ITEMS_FETCH_DATA_SUCCESS:
             return {
                 ...state, 
-                heroes: state.heroes.concat(action.items)
+                results: state.results.concat(data.results)
               }
 
         default:
