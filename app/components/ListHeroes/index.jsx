@@ -67,7 +67,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchData: (url) => dispatch(actions.itemsFetchData(url)),
       addName: (data) => dispatch(actions.addName(data))
   };
 };

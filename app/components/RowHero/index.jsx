@@ -44,11 +44,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      fetchData: (url) => dispatch(actions.itemsFetchData(url))
-  };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(RowHero);
+export default connect(mapStateToProps)(RowHero);

@@ -5,7 +5,7 @@ const initialState = { results: [] };
 export const items = (state = initialState, action) => {
     const { type, data } = action;
     switch (type) {
-        case Const.ITEMS_FETCH_DATA_SUCCESS:
+        case Const.GET_HEROES:
             return {
                 ...state, 
                 results: state.results.concat(data.results)

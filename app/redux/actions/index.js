@@ -15,9 +15,9 @@ export const itemsHasErrored = (data) => {
     };
   };
 
-export const itemsFetchDataSuccess = (data) => {
+export const getHeroes = (data) => {
     return {
-        type: Const.ITEMS_FETCH_DATA_SUCCESS,
+        type: Const.GET_HEROES,
         data: data
     };
   };
@@ -33,7 +33,7 @@ export const itemsFetchData = (url) => {
                     throw Error(response.statusText);
                 }
                 
-                dispatch(itemsFetchDataSuccess(response.data));
+                dispatch(getHeroes(response.data));
 
             })
             .catch(() => dispatch(itemsHasErrored(true)));

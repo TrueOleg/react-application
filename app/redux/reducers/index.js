@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import namesHeroes from './namesHeroes';
-import { items, itemsIsLoading, itemsHasErrored } from './loadHeroes';
+import { items } from './loadHeroes';
 
 const rootReducer = combineReducers({
   namesHeroes,
