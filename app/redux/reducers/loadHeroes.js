@@ -1,28 +1,6 @@
 import * as Const from '../constants';
 
-const initialState = {
-    results: [],
-}
-
-export const itemsHasErrored = (state = false, action) => {
-    switch (action.type) {
-        case Const.ITEMS_HAS_ERRORED:
-            return action.hasErrored;
-
-        default:
-            return state;
-    }
-}
-
-export const itemsIsLoading = (state = false, action) => {
-    switch (action.type) {
-        case Const.ITEMS_IS_LOADING:
-            return action.isLoading;
-
-        default:
-            return state;
-    }
-}
+const initialState = { results: [] };
 
 export const items = (state = initialState, action) => {
     const { type, data } = action;
@@ -31,9 +9,10 @@ export const items = (state = initialState, action) => {
             return {
                 ...state, 
                 results: state.results.concat(data.results)
-              }
-
+              };
+        case Const.ITEMS_HAS_ERRORED:
+            return action.hasErrored;
         default:
             return state;
     }
-}
+};

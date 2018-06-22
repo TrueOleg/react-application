@@ -4,18 +4,6 @@ const initialState = {
     names: [],
 };
 
-const visibleHeroes = (state, action) => {
-  const { type, data } = action;
-  switch (type) {
-    case Const.DISPATCH_VISIBLE_HEROES:
-      return {
-        ...state, 
-        stateOfHeroes: state.stateOfHeroes.concat(data)
-      }
-    default: return state;  
-  } 
-};
-
 const findName = (state, arr, name, action) => {
   const i = arr.indexOf(name, 0);
   const data = action.data;
@@ -24,24 +12,24 @@ const findName = (state, arr, name, action) => {
       return {
         ...state, 
         names: state.names.concat(data)
-      }
+      };
     default:
     return {
       ...state, 
       names: state.names.splice(0, i)
-    }  
+    };
   }
-}
+};
 
 const nameHeroes = (state = initialState, action) => {
     const { type, data } = action;
     switch (type) {
       case Const.ADD_NAME:
         const arr = state.names;
-        return findName(state, arr, data, action)
+        return findName(state, arr, data, action);
         
       default: return state;  
   }
-}
+};
 
 export default nameHeroes;

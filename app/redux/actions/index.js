@@ -8,30 +8,22 @@ export const addName = (data) => {
     };
   };
 
-export const itemsHasErrored = (bool) => {
+export const itemsHasErrored = (data) => {
     return {
-        type: 'ITEMS_HAS_ERRORED',
-        hasErrored: bool
+        type: Const.ITEMS_HAS_ERRORED,
+        hasErrored: data
     };
   };
 
-export const itemsIsLoading = (bool) => {
+export const itemsFetchDataSuccess = (data) => {
     return {
-        type: 'ITEMS_IS_LOADING',
-        isLoading: bool
-    };
-  };
-
-export const itemsFetchDataSuccess = (json) => {
-    return {
-        type: 'ITEMS_FETCH_DATA_SUCCESS',
-        data: json
+        type: Const.ITEMS_FETCH_DATA_SUCCESS,
+        data: data
     };
   };
 
 export const itemsFetchData = (url) => {
     return (dispatch) => {
-        dispatch(itemsIsLoading(true));
 
         axios.get(url)
             .then((response) => {
@@ -40,23 +32,13 @@ export const itemsFetchData = (url) => {
 
                     throw Error(response.statusText);
                 }
+                
+                dispatch(itemsFetchDataSuccess(response.data));
 
-                dispatch(itemsIsLoading(false));
-
-                return response;
-            })
-            .then((response) => {
-                dispatch(itemsFetchDataSuccess(response.data))
             })
             .catch(() => dispatch(itemsHasErrored(true)));
     };
   };
 
-export const dispatchVisibilityHeroes = (state) => {
-    return {
-        type: 'DISPATCH_VISIBLE_HEROES',
-        data: state
-    };
-};
 
   

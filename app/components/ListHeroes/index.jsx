@@ -50,7 +50,6 @@ class ListHeroes extends React.Component {
         <ul>
           { comp }
         </ul>
-        <button onClick={this.isOpen}></button>
         <input onChange={this.isChange} onBlur={this.isClear} value={this.state.input} type='text' />
         <p>{this.state.input}</p>
       </div>  

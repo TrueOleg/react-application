@@ -4,9 +4,7 @@ import { items, itemsIsLoading, itemsHasErrored } from './loadHeroes';
 
 const rootReducer = combineReducers({
   namesHeroes,
-  items,
-  itemsIsLoading,
-  itemsHasErrored
+  items
 });
 
 export default rootReducer;
