@@ -1,6 +1,7 @@
 export const findName = (state, arr, name, action) => {
-    const i = arr.indexOf(name, 0);
     const data = action.data;
+    const i = arr.findIndex( elem =>  elem == data );
+    
     switch (i) {
       case -1:
         return {

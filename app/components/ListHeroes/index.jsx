@@ -43,7 +43,7 @@ class ListHeroes extends React.Component {
   render() {
     const { heroes } = this.props;
     const comp = heroes.map((item) => {
-      return (<RowHero hero={item} state={this.state.isOpen} isOpen={this.isOpen}/>)
+      return (<RowHero key={item.name} hero={item} state={this.state.isOpen} isOpen={this.isOpen}/>)
     });
     return (
       <div>
